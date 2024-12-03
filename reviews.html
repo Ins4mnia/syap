@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Отзывы о компании</title>
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>IT Agency</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&family=Oxanium:wght@200..800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="mednews.css" />
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        font-family: Arial, sans-serif;
+        background-color: #f9f9f9;
+        color: #333;
+      }
+      header {
+        background-color: #007bff;
+        color: #fff;
+        padding: 20px;
+        text-align: center;
+      }
+      header h1 {
+        margin: 0;
+        font-size: 2rem;
+      }
+      .reviews-container {
+        max-width: 1200px;
+        margin: 40px auto;
+        padding: 20px;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 20px;
+      }
+      .review-card {
+        background: #fff;
+        border-radius: 10px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        padding: 20px;
+        text-align: center;
+      }
+      .review-card img {
+        width: 80px;
+        height: 80px;
+        border-radius: 50%;
+        margin-bottom: 15px;
+      }
+      .review-card h3 {
+        font-size: 1.2rem;
+        margin-bottom: 10px;
+        color: #007bff;
+      }
+      .review-card p {
+        font-size: 1rem;
+        line-height: 1.5;
+        color: #555;
+      }
+      footer {
+        text-align: center;
+        padding: 10px 20px;
+        background-color: #007bff;
+        color: white;
+        position: relative;
+      }
+      .marquee-container {
+        width: 100%;
+        background-color: #007bff;
+        color: white;
+        overflow: hidden;
+        position: relative;
+        height: 50px;
+        display: flex;
+        align-items: center;
+      }
+      .marquee {
+        display: flex;
+        white-space: nowrap;
+        animation: scroll 20s linear infinite;
+      }
+      .marquee span {
+        margin-right: 50px;
+        font-size: 1.2rem;
+        font-weight: bold;
+      }
+      @keyframes scroll {
+        0% {
+          transform: translateX(100%);
+        }
+        100% {
+          transform: translateX(-100%);
+        }
+      }
+    </style>
+    <style>
+      h1 {
+        text-align: center;
+        color: #333;
+      }
+      .reviews {
+        margin-bottom: 20px;
+      }
+      .review {
+        padding: 10px;
+        margin-bottom: 10px;
+        background-color: #f9f9f9;
+        border-radius: 5px;
+        box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+      }
+      .review p {
+        margin: 0;
+      }
+      .review .author {
+        font-weight: bold;
+      }
+      .form-container {
+        margin-top: 20px;
+      }
+      .form-container input,
+      .form-container textarea {
+        width: 100%;
+        padding: 10px;
+        margin: 5px 0;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+      }
+      .form-container button {
+        padding: 10px 20px;
+        background-color: #4caf50;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+      .form-container button:hover {
+        background-color: #45a049;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Header -->
+    <div class="header">
+      <div class="header_wrapper container">
+        <a href="./index.html" class="logo">Digital Agency</a>
+        <a href="./team.html" class="link">Команда</a>
+        <a href="./reviews.html" class="link">Отзывы</a>
+        <a href="./consumer.html" class="link">Окно заказчика</a>
+      </div>
+    </div>
+    <div style="min-height: 70vh">
+      <div class="container block">
+        <h1>Отзывы</h1>
+
+        <!-- Раздел с отзывами -->
+        <div class="reviews">
+          <!-- Отзывы будут загружаться сюда динамически -->
+        </div>
+
+        <!-- Форма для добавления нового отзыва -->
+        <div class="form-container">
+          <h3>Оставьте свой отзыв</h3>
+          <form id="review-form">
+            <input type="text" id="name" placeholder="Ваше имя" required /><br />
+            <textarea id="review-text" rows="4" placeholder="Ваш отзыв" required></textarea><br />
+            <button type="submit">Отправить отзыв</button>
+          </form>
+        </div>
+      </div>
+    </div>
+    <script>
+      // Функция для загрузки отзывов из локального хранилища
+      function loadReviews() {
+        const reviews = JSON.parse(localStorage.getItem("reviews")) || [];
+        const reviewsContainer = document.querySelector(".reviews");
+        reviewsContainer.innerHTML = ""; // Очищаем контейнер перед добавлением
+
+        reviews.forEach((review) => {
+          const reviewElement = document.createElement("div");
+          reviewElement.classList.add("review");
+          reviewElement.innerHTML = `
+                  <p class="author">${review.name}:</p>
+                  <p>${review.text}</p>
+              `;
+          reviewsContainer.appendChild(reviewElement);
+        });
+      }
+
+      // Функция для сохранения нового отзыва в локальное хранилище
+      function saveReview(name, text) {
+        const reviews = JSON.parse(localStorage.getItem("reviews")) || [];
+        reviews.push({ name, text });
+        localStorage.setItem("reviews", JSON.stringify(reviews));
+      }
+
+      // Обработчик отправки формы
+      document.getElementById("review-form").addEventListener("submit", function (event) {
+        event.preventDefault(); // Отменяем стандартное поведение формы
+
+        const name = document.getElementById("name").value;
+        const reviewText = document.getElementById("review-text").value;
+
+        if (name && reviewText) {
+          // Сохраняем новый отзыв в локальное хранилище
+          saveReview(name, reviewText);
+
+          // Загружаем все отзывы из локального хранилища
+          loadReviews();
+
+          // Очищаем форму
+          document.getElementById("name").value = "";
+          document.getElementById("review-text").value = "";
+        }
+      });
+
+      // Загружаем отзывы при загрузке страницы
+      window.onload = loadReviews;
+    </script>
+    <!-- Footer -->
+    <div class="footer">
+      <div class="footer_wrapper container">
+        <a href="./index.html" class="logo">Digital Agency</a>
+        <a href="./consumer.html" class="link">Окно заказчика</a>
+      </div>
+    </div>
+  </body>
+</html>

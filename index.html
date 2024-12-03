@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>IT Agency</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&family=Oxanium:wght@200..800&display=swap" rel="stylesheet" />
+    <style>
+      .marquee-container {
+        width: 100%;
+        background-color: #007bff;
+        color: white;
+        overflow: hidden;
+        position: relative;
+        height: 50px;
+        display: flex;
+        align-items: center;
+      }
+      .marquee {
+        display: flex;
+        white-space: nowrap;
+        animation: scroll 20s linear infinite;
+      }
+      .marquee span {
+        margin-right: 50px;
+        font-size: 1.2rem;
+        font-weight: bold;
+      }
+      @keyframes scroll {
+        0% {
+          transform: translateX(100%);
+        }
+        100% {
+          transform: translateX(-100%);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="marquee-container">
+      <div class="marquee">
+        <span>Акция: Закажите сайт и получите 1 месяц поддержки бесплатно!</span>
+        <span>Скидка 20% на создание корпоративного портала до конца месяца!</span>
+        <span>Базовый тариф всего за 5 000 ₽ – отличное решение для старта!</span>
+      </div>
+    </div>
+    <!-- Header -->
+    <div class="header">
+      <div class="header_wrapper container">
+        <a href="./index.html" class="logo">Digital Agency</a>
+        <a href="./team.html" class="link">Команда</a>
+        <a href="./reviews.html" class="link">Отзывы</a>
+        <a href="./consumer.html" class="link">Окно заказчика</a>
+      </div>
+    </div>
+
+    <!-- Main Content -->
+    <main class="container main_wrapper">
+      <!-- Welcome Section -->
+      <div class="block main">
+        <h1 style="text-align: center; font-size: 24px">Добро пожаловать в Digital Agency — ваш надежный партнер в мире веб-разработки!</h1>
+        <p style="text-align: center; font-size: 18px">Мы создаем уникальные сайты, которые помогают бизнесам расти.</p>
+      </div>
+
+      <!-- Work Section -->
+      <div class="block work-wrapper" id="workWrapper">
+        <h2 style="text-align: center; font-size: 32px">Наши работы</h2>
+      </div>
+
+      <!-- Pricing Section -->
+      <div class="block">
+        <div class="pricing-section">
+          <h1>Тарифы нашей компании</h1>
+          <div id="pricing-cards" class="pricing-cards"></div>
+        </div>
+      </div>
+
+      <!-- Review Section -->
+      <!-- <div class="block team-wrapper" id="teamWrapper">
+        <h2 style="text-align: center; font-size: 32px">Отзывы</h2>
+        <div class="team-members" style="display: flex; justify-content: center; flex-wrap: wrap"></div>
+      </div> -->
+    </main>
+
+    <!-- Footer -->
+    <div class="footer">
+      <div class="footer_wrapper container">
+        <a href="./index.html" class="logo">Digital Agency</a>
+        <a href="./consumer.html" class="link">Окно заказчика</a>
+      </div>
+    </div>
+
+    <!-- Modals -->
+    <div id="workModal" class="modal">
+      <div class="modal-content">
+        <span class="close">&times;</span>
+        <img id="workModalImg" src="" alt="Work Image" />
+        <h2 id="workModalTitle"></h2>
+        <p id="workModalDesc"></p>
+        <p id="workModalPrice"></p>
+      </div>
+    </div>
+
+    <div id="tariffModal" class="modal">
+      <div class="modal-content">
+        <span class="close">&times;</span>
+        <h2 id="tariffModalTitle"></h2>
+        <p id="tariffModalPrice"></p>
+        <div id="tariffModalDetails"></div>
+      </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="scripts.js"></script>
+  </body>
+</html>

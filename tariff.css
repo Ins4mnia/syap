@@ -1,0 +1,35 @@
+.title {
+  font-size: 42px;
+  font-weight: 600;
+}
+.wrappper {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.detailss {
+  display: flex;
+  flex-direction: column;
+  font-size: 24px;
+  line-height: 24px;
+  gap: 32px;
+}
+.detailss h2 {
+  font-size: 24px;
+}
+.detailss p {
+  font-size: 18px;
+}
+
+.opisanie {
+  font-size: 24px;
+  line-height: 24px;
+}
+.podoidet {
+  font-size: 24px;
+  line-height: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}

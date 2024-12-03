@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>IT Agency</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&family=Oxanium:wght@200..800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="mednews.css" />
+    <style>
+      .swiper {
+        width: 100%;
+        height: 700px;
+      }
+      .swiper-slide {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+      }
+      .swiper-slide img {
+        width: 600px;
+        object-fit: cover;
+        border-radius: 50px;
+      }
+      .swiper-slide h2 {
+        font-size: 2rem;
+        margin: 0;
+      }
+      .swiper-slide p {
+        font-size: 1.2rem;
+        color: #555;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Header -->
+    <div class="header">
+      <div class="header_wrapper container">
+        <a href="./index.html" class="logo">Digital Agency</a>
+        <a href="./team.html" class="link">Команда</a>
+        <a href="./reviews.html" class="link">Отзывы</a>
+        <a href="./consumer.html" class="link">Окно заказчика</a>
+      </div>
+    </div>
+    <!-- Swiper -->
+    <main class="container block" style="min-height: 70vh">
+      <div class="swiper">
+        <div class="swiper-wrapper">
+          <!-- Slide 1 -->
+          <div class="swiper-slide">
+            <img src="/team1.jpg" alt="Иван Иванов" />
+            <h2>Тагиров Динислам</h2>
+            <p>Frontend</p>
+            <p>Люблю верстать и кодить!</p>
+          </div>
+          <!-- Slide 2 -->
+          <div class="swiper-slide">
+            <img src="/team2.jpg" alt="Анна Смирнова" />
+            <h2>Терегулов Тимур</h2>
+            <p>Project Manager</p>
+            <p>Управлять - это мое!</p>
+          </div>
+          <!-- Slide 3 -->
+          <div class="swiper-slide">
+            <img src="/team3.jpg" alt="Петр Петров" />
+            <h2>Юшков Владислав</h2>
+            <p>Backend</p>
+            <p>Смотрю назад</p>
+          </div>
+        </div>
+        <!-- Pagination -->
+        <div class="swiper-pagination"></div>
+      </div>
+    </main>
+    <!-- Footer -->
+    <div class="footer">
+      <div class="footer_wrapper container">
+        <a href="./index.html" class="logo">Digital Agency</a>
+        <a href="./consumer.html" class="link">Окно заказчика</a>
+      </div>
+    </div>
+    <!-- Swiper JS -->
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+    <script>
+      const swiper = new Swiper(".swiper", {
+        direction: "horizontal",
+        loop: true,
+        pagination: {
+          el: ".swiper-pagination",
+          clickable: true,
+        },
+      });
+    </script>
+  </body>
+</html>

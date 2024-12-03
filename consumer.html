@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Окно заказчика</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="styles-consumer.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <script src="https://unpkg.com/imask"></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Oxanium:wght@200..800&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <!-- Header -->
+    <div class="header">
+      <div class="header_wrapper container">
+        <a href="./index.html" class="logo">Digital Agency</a>
+        <a href="./team.html" class="link">Команда</a>
+        <a href="./reviews.html" class="link">Отзывы</a>
+        <a href="./consumer.html" class="link">Окно заказчика</a>
+      </div>
+    </div>
+    <div class="body">
+      <div class="form-wrapper">
+        <div class="form-container">
+          <h1>Оформление заявки</h1>
+          <p>Пожалуйста, заполните форму для отправки заявки. Все поля обязательны к заполнению.</p>
+
+          <form id="customer-form">
+            <div class="form-group">
+              <label for="phone">Номер телефона:</label>
+              <input type="tel" id="phone" name="phone" placeholder="+7 (___) ___-__-__" required />
+            </div>
+
+            <div class="form-group">
+              <label for="name">Имя:</label>
+              <input type="text" id="name" name="name" placeholder="Ваше имя" required />
+            </div>
+
+            <div class="form-group">
+              <label for="type">Тип лица:</label>
+              <select id="type" name="type" required>
+                <option value="" disabled selected>Выберите тип лица</option>
+                <option value="Физическое лицо">Физическое лицо</option>
+                <option value="Юридическое лицо">Юридическое лицо</option>
+              </select>
+            </div>
+
+            <div class="form-group checkbox-group">
+              <input type="checkbox" id="consent" name="consent" required />
+              <label for="consent">Я даю согласие на обработку персональных данных</label>
+            </div>
+
+            <button type="submit" class="submit-btn">Отправить заявку</button>
+          </form>
+
+          <div id="notification" class="notification"></div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      const phoneInput = document.getElementById("phone");
+      const phoneMask = IMask(phoneInput, {
+        mask: "+{7} (000) 000-00-00",
+      });
+
+      document.getElementById("customer-form").addEventListener("submit", function (e) {
+        e.preventDefault();
+
+        // Валидация
+        const phone = document.getElementById("phone").value;
+        const name = document.getElementById("name").value;
+        const type = document.getElementById("type").value;
+        const consent = document.getElementById("consent").checked;
+
+        if (!phone || !name || !type || !consent) {
+          alert("Пожалуйста, заполните все поля и подтвердите согласие.");
+          return;
+        }
+
+        setTimeout(() => {
+          document.getElementById("notification").innerText = "Заявка отправлена! Мы скоро с вами свяжемся!";
+          document.getElementById("notification").style.display = "block";
+        }, 1000);
+      });
+    </script>
+    <div class="footer">
+      <div class="footer_wrapper container">
+        <a href="./index.html" class="logo">Digital Agency</a>
+
+        <a href="./consumer.html" class="link">Окно заказчика</a>
+      </div>
+    </div>
+  </body>
+</html>
